@@ -5,13 +5,17 @@
   
 
   
-  <title>ZhangShuaiGou</title>
+  <title>Mobile Game Range Module - Merging Ranges | ZhangShuaiGou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZhangShuaiGou">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="The problem description is:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mobile Game Range Module - Merging Ranges">
+<meta property="og:url" content="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/index.html">
 <meta property="og:site_name" content="ZhangShuaiGou">
+<meta property="og:description" content="The problem description is:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task i">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-16T07:51:14.104Z">
+<meta property="article:modified_time" content="2021-01-16T08:19:16.711Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
   
@@ -62,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Mobile Game Range Module - Merging Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Mobile Game Range Module - Merging Ranges" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" class="article-date">
   <time datetime="2021-01-16T07:51:14.104Z" itemprop="datePublished">2021-01-16</time>
@@ -81,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>
+    <h1 class="article-title" itemprop="name">
+      Mobile Game Range Module - Merging Ranges
     </h1>
   
 
@@ -116,121 +118,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Count paths on a game board" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" class="article-date">
-  <time datetime="2021-01-16T04:24:30.337Z" itemprop="datePublished">2021-01-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-com-coding/">Firecode.com coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/16/Count%20paths%20on%20a%20game%20board/">Count Paths on a Game Board</a>
-    </h1>
+    <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Count Paths on a Game Board</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today, I practiced an interesting problem in <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index">Firecode.com</a>.</p>
-<p>The description of the question is:</p>
-<blockquote>
-<p>You’re given a game board that has m x n squares on it, represented by an m x n array. Write a method - <strong><em>count_paths</em></strong> that takes in m and n and returns the number of possible paths from the top left corner to the bottom right corner. Only down and right directions of movement are permitted.</p>
-</blockquote>
-<p>In other words, given a matrix [m,n] and output the distinct paths from [0,0] to [m,n]. </p>
-<p>At the beginning, I was thinking about using a tree to represent all the decisions - because <em>only down and right directions are permitted</em>. I noticed an interesting thing, that is once we need to reach to <em>[m,n]</em>, we have to approach <em>[m,n-1]</em> and <em>[m-1,n]</em> and the number of paths reaching <em>[m,n]</em> equals the paths reaching <em>[m,n-1]</em> <strong>+</strong> <em>[m-1,n]</em>. It looks like we can solve it via <strong><em>recursion</em></strong> way. So, the code is shown following: </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_paths</span><span class="params">(<span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//There will only one path when there is only one row or one col.</span></span><br><span class="line">    <span class="keyword">if</span>(rows==<span class="number">1</span> || cols==<span class="number">1</span>)</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//Otherwise resolve the problem recursively. </span></span><br><span class="line">    <span class="keyword">return</span> count_paths(rows, cols<span class="number">-1</span>) + count_paths(rows<span class="number">-1</span>, cols);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This solution works well in normal cases. However, when the test cases are relatively large,  <em>[15,16]</em> and <em>[18,17]</em> for example, this solution will fail in time condition. So I have to find another way to figure it out. </p>
-<p>Lastly, I have found a solution via <strong><em>Dynamic programming</em></strong>. The idea is quite similar with the recursion, however, in this solution, each cell (<em>[i,j]</em>) store the number of paths to the cell. In the end, the value stored in desired cell is the answer. </p>
-<p>The code shown below:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_paths</span><span class="params">(<span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Create the vector to store the result. Initial all the elements as 1.</span></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">result</span><span class="params">(rows,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; (cols,<span class="number">1</span>))</span></span>; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;rows;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;cols;j++)&#123;</span><br><span class="line">            result[i][j] = result[i<span class="number">-1</span>][j] + result[i][j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result[rows<span class="number">-1</span>][cols<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This solution passed all the test cases. </p>
-<h4>Now, we have to think about why the second solution is faster than the first. </h4>
-
-<p>Here is a <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/63075755">link</a> shows plenty discussion about the Time Complexity of this question. </p>
-<p>In conclusion, the time complexity of the first solution is <em>O(2<sup>m+n</sup>)</em>. Because for every single time, the function <code> count_paths</code> will run twice. There are <em>m</em> <strong>+</strong> <em>n</em> times in total. However, we can use some strategy to prune the algorithm. It doesn’t improve too much. Especially when the <em>m</em> and <em>n</em> grows larger and larger.</p>
-<p>However, the time complexity of the second solution is <em>O(m\</em>n)*. Because there are only two <code>for()</code> loops in the solution. </p>
-<p>Apparently, the <em>O(2<sup>m+n</sup>)</em> will be extremely larger than <em>O(m\</em>n)* when the <em>m</em> and <em>n</em> grows larger.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/16/Count%20paths%20on%20a%20game%20board/" data-id="ckjzazq9g0000rswrbu4r48ue" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-Hello-World-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/09/Hello-World-0/" class="article-date">
-  <time datetime="2020-09-09T06:41:57.066Z" itemprop="datePublished">2020-09-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/About/">About</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/09/Hello-World-0/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my personal page. I have been thinking for a quite time to have a personal page, where I can record the trouble I met and ideas through my study. </p>
-<p>Currently, I am working on my first paper. <del>I feel so happy.</del> </p>
-<p>However, it is glad to have my personal page, I will come to it frequently and post some thoughtful articles. </p>
-<p>In following couple days I will upload my first article or something like a article here. </p>
-<p>Hope I can come back here soon. ^_^</p>
-<p>By the way, in order to learn about the Markdown language, I post the useful link bellow.</p>
-<p><a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/">Basic Syntax of MD</a></p>
-<p>By by the way, I will upload some of my coding to my <a target="_blank" rel="noopener" href="https://github.com/ZhangShuaiGou">Github</a>. At least better than an empty page. </p>
-<p>See you soon ! <del>Maybe this Friday</del></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/Hello-World-0/" data-id="ckev8224e00008swray1tc8k8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
