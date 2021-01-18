@@ -64,6 +64,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Iterative BST Validation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/18/Iterative%20BST%20Validation/" class="article-date">
+  <time datetime="2021-01-18T05:04:15.050Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today’s problem is a classic problem, validate a BST. </p>
+<p>Description:</p>
+<blockquote>
+<p>Given the root node of a <strong>Binary Tree</strong>, write a method - <code>validate_bst_itr</code> to <strong>iteratively</strong> determine if it is a Binary <strong>Search</strong> Tree.</p>
+<p><strong>A <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">BST</a> must satisfy the following conditions :</strong><br>* The left subtree of a node contains nodes with data &lt; its data.<br>* The right subtree of a node contains  nodes data &gt; its data.<br>* A node’s left and right subtrees follow the above two conditions.</p>
+<p><strong>Examples:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">       20</span><br><span class="line">      &#x2F;   \</span><br><span class="line">    15    30</span><br><span class="line">   &#x2F;  \</span><br><span class="line">  14  18     </span><br><span class="line"></span><br><span class="line"> output &#x3D;&#x3D;&gt; true</span><br><span class="line"></span><br><span class="line">       20</span><br><span class="line">      &#x2F;   \</span><br><span class="line">    30    15 </span><br><span class="line">   &#x2F;  \                           </span><br><span class="line">  14  18     </span><br><span class="line"></span><br><span class="line">output &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>There are several methods to figure it out. I used recursive approach. </p>
+<p>The key point is the <code>left-&gt;value</code> is always less than the <code>root-&gt;value</code> and the <code>right-&gt;value</code> is always greater than <code>root-&gt;value</code>. Construct the recursive function based on this rule.  </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(treeNode* nd, <span class="keyword">int</span> max, <span class="keyword">int</span> min)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(nd==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(nd-&gt;value&gt;max)	<span class="comment">//for every left child, there is a maximum.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(nd-&gt;value&lt;min)	<span class="comment">//for every right child, there is a minimum.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(nd-&gt;left, nd-&gt;value, min) &amp;&amp; helper(nd-&gt;right, max, nd-&gt;value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">validate_bst_itr</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">//INT_MAX is the system pre-defiend max of int, so does INT_MIN.</span></span><br><span class="line">    <span class="comment">//the max and min will be updated by every layer of recursion.</span></span><br><span class="line">    <span class="keyword">return</span> helper(root,INT_MAX,INT_MIN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, when I submitted this solution, I noticed that the problem was asking us to solve it via <strong>iteratively</strong> instead of recursively. Therefore I learned about the following solution, which via <strong><em>In-Order traversal</em></strong>.  The steps or ideas can be found this <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/">link</a> and this <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/c_zCrGHIVlBjUH_hJtghCg">link</a>. </p>
+<p>Step 1: Create stack to store the nodes.</p>
+<p>Step 2: Push the root node and the left child, and the left children of left child… I used <code>root = root-&gt;left</code>, however, it could be a pointer like <code>cur_nd = root-&gt;left</code> and <code>cur_nd = cur_nd-&gt;left</code> to make the code more readable.   </p>
+<p>Step 3: This push will stop at there is no left child among the  left children of <code>root</code> node. Now, the top of the stack is the “root” node of the last “left node”.  Then pop this node and make its right child as the new <code>cur_nd</code> and go back to step 2. </p>
+<p>Step 4: So long, we only need to check whether the current node’s value is smaller than previous node’s. Because for the BST, the value of node will be displayed as ascend. </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">validate_bst_itr</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">stack</span>&lt;treeNode*&gt; sta;</span><br><span class="line">    <span class="keyword">int</span> min = INT_MIN;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//In-order traversal</span></span><br><span class="line">    <span class="keyword">while</span>(!sta.empty() || root!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="comment">//step 2: push all &quot;left nodes&quot; to stack firstly</span></span><br><span class="line">        <span class="keyword">while</span>(root!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            sta.push(root);</span><br><span class="line">            root = root-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//step 3: explore the top node.</span></span><br><span class="line">        <span class="comment">//the top could be left node or a root/middle node</span></span><br><span class="line">        root = sta.top();</span><br><span class="line">        sta.pop();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//check whether the value is smaller than previous&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;value &lt;= min)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//update the &quot;previou&#x27;s value&quot;.</span></span><br><span class="line">        min = root-&gt;value;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//step 3: to push the right node of last node. </span></span><br><span class="line">        <span class="comment">//then start from step 2, namely, the begin of the while loop.</span></span><br><span class="line">        root = root-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>I have to say that, although this kind of traversal methods I have learnt in university, I forgot them at all. I am planning to take some time to review about it.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Iterative%20BST%20Validation/" data-id="ckk2cvyco000020wrgkdm4ks6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1-800-PROBLEM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/17/1-800-PROBLEM/" class="article-date">
@@ -432,6 +494,10 @@
       <ul>
         
           <li>
+            <a href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/17/1-800-PROBLEM/">1-800-PROBLEM</a>
           </li>
         
@@ -445,10 +511,6 @@
         
           <li>
             <a href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/">Count Paths on a Game Board</a>
           </li>
         
       </ul>
