@@ -64,6 +64,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Find the Lowest Common Ancestor of two Tree Nodes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" class="article-date">
+  <time datetime="2021-01-19T03:35:10.020Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today’s programming practice is  <strong><em>Find the Lowest Common Ancestor of two Tree Nodes</em></strong>.</p>
+<p>Description here:</p>
+<blockquote>
+<p>Given a <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">binary tree</a> and the data values of two tree nodes, implement a function to find and return the <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">LCA</a> (Lowest Common Ancestor) node of the two nodes. <code>a</code> and <code>b</code> are the data values of the two input nodes. Assume that nodes with the values <code>a</code> and <code>b</code> will surely exist in the tree.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Examples:</span><br><span class="line"></span><br><span class="line">       1              </span><br><span class="line">      &#x2F; \            </span><br><span class="line">     2   3     </span><br><span class="line">    &#x2F; \ &#x2F; \       </span><br><span class="line">   4  5 6  7         </span><br><span class="line">&#x3D;&#x3D;&gt; </span><br><span class="line">LCA of 6 and 4 is 1,</span><br><span class="line">    </span><br><span class="line">LCA of 4 and 5 is 2.</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>The approach I used is to record the path of the target <code>a</code> and <code>b</code>, and compare the two path, the last same node is the LCA of <code>a</code> and <code>b</code>. The point of this how to recursively record the path. </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt; // for using min() function</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">get_path</span><span class="params">(treeNode* root, <span class="keyword">int</span> key, <span class="built_in">vector</span>&lt;treeNode*&gt; &amp;path)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    path.push_back(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(root-&gt;value==key)&#123;			<span class="comment">//In some cases, the two targets are parent-child relation, </span></span><br><span class="line">        path.push_back(root);		<span class="comment">//push double node to avoid the path stop at the &#x27;parent node&#x27;.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;				</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(get_path(root-&gt;left,key,path) || get_path(root-&gt;right,key,path))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    path.pop_back();		<span class="comment">//If cannot find target value under current node, remove this node. </span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">treeNode* <span class="title">find_lca</span><span class="params">(treeNode* root, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">vector</span>&lt;treeNode*&gt; path_a;</span><br><span class="line">    <span class="built_in">vector</span>&lt;treeNode*&gt; path_b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(!get_path(root,a,path_a) || !get_path(root,b,path_b))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;min(path_a.size(),path_b.size()); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(path_a[i]!=path_b[i])			<span class="comment">//Once find the diffence in the path, </span></span><br><span class="line">            <span class="keyword">return</span> path_a[i<span class="number">-1</span>];				<span class="comment">//return the previous one.</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>At first I failed in design the correct recursion function, then I searched it online and learned and corrected my solution from <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/">GeeksforGeeks</a> via this <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/">link</a>. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" data-id="ckk3gwhah0000ywwrabwz2oa4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Theme change plan" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/18/Theme%20change%20plan/" class="article-date">
@@ -537,6 +588,10 @@
       <ul>
         
           <li>
+            <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/18/Theme%20change%20plan/">Theme change plan</a>
           </li>
         
@@ -550,10 +605,6 @@
         
           <li>
             <a href="/2021/01/17/Find%20the%20Number%20that%20Appears%20Once/">Find the Number that Appears Once</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/">Repeated Elements in an Array</a>
           </li>
         
       </ul>
