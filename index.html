@@ -64,6 +64,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mobile Game Range Module - Inserting Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" class="article-date">
+  <time datetime="2021-01-21T00:34:45.901Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - <code>insert_range</code> that takes in a <code>vector</code> of <strong>sorted, non-overlapping integer</strong> <code>Interval</code> s (aka ranges) and a new <code>Interval</code> - <code>insert</code>, and returns a <code>vector</code> of <strong>sorted</strong> <code>Interval</code> s where <code>insert</code> has been added to the <code>vector</code> in the correct spot and the required overlapping ranges have been merged. The <code>Interval</code> class is available by clicking <strong>Use Me</strong>. Target a time complexity of <strong>O(n)</strong>.</p>
+<p><strong>Note:</strong><br>a) [1,3] represents an interval that includes 1, 2 and 3.<br>b) Intervals should be sorted based on the value of <code>start</code><br>c) The words <strong>Range</strong> and <strong>Interval</strong> are used interchangeably</p>
+<p><strong>Examples:</strong><br>Inputs: [ [1,3], [7,10] ] &amp; [2,6], Output: [ [1,6], [7,10] ]</p>
+</blockquote>
+<p>This problem is quite same as the previous one [Mobile Game Range Module - Merging Ranges](/Mobile Game Range Module - Merging Ranges.md). The only difference is: in this problem, we need to push the <code>insert_range</code> to the <code>interval_list</code> and the following step is exactly same with the [Mobile Game Range Module - Merging Ranges](/Mobile Game Range Module - Merging Ranges.md).</p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Interval(a.start, b.end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">insert_range</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list, Interval insert)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    intervals_list.push_back(insert);	<span class="comment">//The only difference is here</span></span><br><span class="line">    <span class="keyword">if</span>(intervals_list.empty())</span><br><span class="line">        <span class="keyword">return</span> intervals_list;</span><br><span class="line">    </span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start, intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;intervals_list.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end&gt;=intervals_list[i].start &amp;&amp; tmp.end&lt;=intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp, intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end &lt; intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" data-id="ckk64o01x0001ucwr6cprfawf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Making Change" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/20/Making%20Change/" class="article-date">
+  <time datetime="2021-01-20T00:21:57.320Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/20/Making%20Change/">Making change</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today’s problem is quite like the <strong>1-800-Problem</strong>.</p>
+<p>Description here:</p>
+<blockquote>
+<p>Given an array containing the available denominations of coins in descending order, write a function to compute the number of possible ways of representing a monetary <code>amount</code> in cents.<br> For simplicity, assume that there are an infinite number of coins available for each coin denomination in the array.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make_change(&#123;25,10,5,1&#125;, 4, 10) &#x3D;&#x3D;&gt; 4  </span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> coins[], <span class="keyword">int</span> cur_idx, <span class="keyword">int</span> n, <span class="keyword">int</span> amount)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur_idx==n)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span>(amount&lt;<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(amount==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(coins, cur_idx, n, amount-coins[cur_idx]) + helper(coins, cur_idx+<span class="number">1</span>, n, amount);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">make_change</span><span class="params">(<span class="keyword">int</span> coins[], <span class="keyword">int</span> n, <span class="keyword">int</span> amount)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> helper(coins, <span class="number">0</span>, n, amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>I will explain it later. </p>
+<p>Now I have to work hard on my paper. Recently, I am thinking of starting another kind of blog – <strong><em>Paper reading</em></strong> to record my useful paper and take the notes. Because I have found it is time to boost my research study. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/Making%20Change/" data-id="ckk64o01p0000ucwr1uqh3jny" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Find the Lowest Common Ancestor of two Tree Nodes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" class="article-date">
@@ -501,56 +603,12 @@
 
 
   
-    <article id="post-Hello-World-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/09/Hello-World-0/" class="article-date">
-  <time datetime="2020-09-09T06:41:57.066Z" itemprop="datePublished">2020-09-09</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/About/">About</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/09/Hello-World-0/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my personal page. I have been thinking for a quite time to have a personal page, where I can record the trouble I met and ideas through my study. </p>
-<p>Currently, I am working on my first paper. <del>I feel so happy.</del> </p>
-<p>However, it is glad to have my personal page, I will come to it frequently and post some thoughtful articles. </p>
-<p>In following couple days I will upload my first article or something like a article here. </p>
-<p>Hope I can come back here soon. ^_^</p>
-<p>By the way, in order to learn about the Markdown language, I post the useful link bellow.</p>
-<p><a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/">Basic Syntax of MD</a></p>
-<p>By by the way, I will upload some of my coding to my <a target="_blank" rel="noopener" href="https://github.com/ZhangShuaiGou">Github</a>. At least better than an empty page. </p>
-<p>See you soon ! <del>Maybe this Friday</del></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/Hello-World-0/" data-id="ckev8224e00008swray1tc8k8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -588,6 +646,14 @@
       <ul>
         
           <li>
+            <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/20/Making%20Change/">Making change</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
           </li>
         
@@ -597,14 +663,6 @@
         
           <li>
             <a href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/17/1-800-PROBLEM/">1-800-PROBLEM</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/17/Find%20the%20Number%20that%20Appears%20Once/">Find the Number that Appears Once</a>
           </li>
         
       </ul>

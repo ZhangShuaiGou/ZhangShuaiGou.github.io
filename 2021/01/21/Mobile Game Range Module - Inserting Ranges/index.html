@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Mobile Game Range Module - Inserting Ranges | ZhangShuaiGou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Description:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a me">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mobile Game Range Module - Inserting Ranges">
+<meta property="og:url" content="http://example.com/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/index.html">
+<meta property="og:site_name" content="ZhangShuaiGou">
+<meta property="og:description" content="Description:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a me">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-21T00:34:45.901Z">
+<meta property="article:modified_time" content="2021-01-21T00:39:02.269Z">
+<meta property="article:author" content="ZhangShuaiGou">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZhangShuaiGou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZhangShuaiGou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Mobile Game Range Module - Inserting Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" class="article-date">
+  <time datetime="2021-01-21T00:34:45.901Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mobile Game Range Module - Inserting Ranges
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - <code>insert_range</code> that takes in a <code>vector</code> of <strong>sorted, non-overlapping integer</strong> <code>Interval</code> s (aka ranges) and a new <code>Interval</code> - <code>insert</code>, and returns a <code>vector</code> of <strong>sorted</strong> <code>Interval</code> s where <code>insert</code> has been added to the <code>vector</code> in the correct spot and the required overlapping ranges have been merged. The <code>Interval</code> class is available by clicking <strong>Use Me</strong>. Target a time complexity of <strong>O(n)</strong>.</p>
+<p><strong>Note:</strong><br>a) [1,3] represents an interval that includes 1, 2 and 3.<br>b) Intervals should be sorted based on the value of <code>start</code><br>c) The words <strong>Range</strong> and <strong>Interval</strong> are used interchangeably</p>
+<p><strong>Examples:</strong><br>Inputs: [ [1,3], [7,10] ] &amp; [2,6], Output: [ [1,6], [7,10] ]</p>
+</blockquote>
+<p>This problem is quite same as the previous one [Mobile Game Range Module - Merging Ranges](/Mobile Game Range Module - Merging Ranges.md). The only difference is: in this problem, we need to push the <code>insert_range</code> to the <code>interval_list</code> and the following step is exactly same with the [Mobile Game Range Module - Merging Ranges](/Mobile Game Range Module - Merging Ranges.md).</p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Interval(a.start, b.end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">insert_range</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list, Interval insert)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    intervals_list.push_back(insert);	<span class="comment">//The only difference is here</span></span><br><span class="line">    <span class="keyword">if</span>(intervals_list.empty())</span><br><span class="line">        <span class="keyword">return</span> intervals_list;</span><br><span class="line">    </span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start, intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;intervals_list.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end&gt;=intervals_list[i].start &amp;&amp; tmp.end&lt;=intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp, intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end &lt; intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" data-id="ckk64o01x0001ucwr6cprfawf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/20/Making%20Change/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Making change</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firecode-coding/">Firecode coding</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/20/Making%20Change/">Making change</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/Theme%20change%20plan/">Theme change plan</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 ZhangShuaiGou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
