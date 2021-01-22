@@ -5,17 +5,17 @@
   
 
   
-  <title>Theme change plan | ZhangShuaiGou</title>
+  <title>Subset Summation | ZhangShuaiGou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="It is good time to change a better theme for my site.  I searched around and decide to change my theme via NexT. I post the official link here and another good blog demonstrate his design here.  I wil">
+  <meta name="description" content="Description:  Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given target.Assume target">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Theme change plan">
-<meta property="og:url" content="http://example.com/2021/01/18/Theme%20change%20plan/index.html">
+<meta property="og:title" content="Subset Summation">
+<meta property="og:url" content="http://example.com/2021/01/22/Subset%20Summation/index.html">
 <meta property="og:site_name" content="ZhangShuaiGou">
-<meta property="og:description" content="It is good time to change a better theme for my site.  I searched around and decide to change my theme via NexT. I post the official link here and another good blog demonstrate his design here.  I wil">
+<meta property="og:description" content="Description:  Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given target.Assume target">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-18T09:36:10.328Z">
-<meta property="article:modified_time" content="2021-01-18T09:40:47.390Z">
+<meta property="article:published_time" content="2021-01-22T05:40:27.191Z">
+<meta property="article:modified_time" content="2021-01-22T05:47:53.934Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
   
@@ -66,14 +66,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Theme change plan" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Subset Summation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/01/18/Theme%20change%20plan/" class="article-date">
-  <time datetime="2021-01-18T09:36:10.328Z" itemprop="datePublished">2021-01-18</time>
+    <a href="/2021/01/22/Subset%20Summation/" class="article-date">
+  <time datetime="2021-01-22T05:40:27.191Z" itemprop="datePublished">2021-01-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/About/">About</a>
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
   </div>
 
   </div>
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Theme change plan
+      Subset Summation
     </h1>
   
 
@@ -92,14 +92,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>It is good time to change a better theme for my site. </p>
-<p>I searched around and decide to change my theme via <strong><em>NexT</em></strong>. I post the official link <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/">here</a> and another good blog demonstrate his design <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9f0e90cc32c2">here</a>. </p>
-<p>I will come back soon.</p>
+        <p>Description:</p>
+<blockquote>
+<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>.<br>Assume <code>target</code> is always a positive number.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>This problem is quite same as the <code>Making change</code> problem.</p>
+<p>The basic idea is to determine whether the last element will be involved. </p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(target==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> group_sum(arr, size<span class="number">-1</span>, target) || group_sum(arr, size<span class="number">-1</span>, target-arr[size<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/18/Theme%20change%20plan/" data-id="ckk2doyax00003kwrbpakbwid" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/22/Subset%20Summation/" data-id="ckk7vq0oq0002eswrdmtu7sk5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +116,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Find the Lowest Common Ancestor of two Tree Nodes
+          Binary Search - Integer Array
         
       </div>
     </a>
   
   
-    <a href="/2021/01/18/Iterative%20BST%20Validation/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Iterative BST Validation</div>
+      <div class="article-nav-title">Find the Level that has the Maximum Sum</div>
     </a>
   
 </nav>

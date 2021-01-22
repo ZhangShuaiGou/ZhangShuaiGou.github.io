@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Binary Search - Integer Array | ZhangShuaiGou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Description:  Write a function that searches an array of integers for a given integer using the Binary Search Algorithm.If the element is found in the array, return true. Otherwise, return false.You c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Search - Integer Array">
+<meta property="og:url" content="http://example.com/2021/01/22/Binary%20Search%20-%20Integer%20Array/index.html">
+<meta property="og:site_name" content="ZhangShuaiGou">
+<meta property="og:description" content="Description:  Write a function that searches an array of integers for a given integer using the Binary Search Algorithm.If the element is found in the array, return true. Otherwise, return false.You c">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-22T06:02:14.030Z">
+<meta property="article:modified_time" content="2021-01-22T06:47:42.678Z">
+<meta property="article:author" content="ZhangShuaiGou">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZhangShuaiGou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZhangShuaiGou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Binary Search - Integer Array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/" class="article-date">
+  <time datetime="2021-01-22T06:02:14.030Z" itemprop="datePublished">2021-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Binary Search - Integer Array
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Write a function that searches an array of integers for a given integer using the <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">Binary Search Algorithm</a>.<br>If the element is found in the array, return <code>true</code>. Otherwise, return <code>false</code>.<br>You can assume that the given array of integers is already sorted in ascending order.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;binary_search(&#123;2,5,7,8,9&#125;,5,9) -&gt; true&#96;</span><br><span class="line">&gt;&#96;binary_search(&#123;2,8,9,12&#125;,4,6) -&gt; false&#96;</span><br><span class="line">&gt;&#96;binary_search(&#123;2&#125;,1,4) -&gt; false&#96;</span><br><span class="line">&gt;&#96;binary_search(&#123;&#125;,0,9) -&gt; false&#96;</span><br><span class="line">&gt;&#96;&#123;&#125; -&gt; [Empty] Array</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>It is basic Binary search implementation. </p>
+<p>The keypoint is the <strong><em>boundary</em></strong> issue. </p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ool <span class="title">helper</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(high&lt;low)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==arr[mid])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[mid]&gt;n)</span><br><span class="line">        <span class="keyword">return</span> helper(arr, low, mid<span class="number">-1</span>, n);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> helper(arr, mid+<span class="number">1</span>, high, n);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Add your code below this line. Do not modify any other code.                   </span></span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(arr,<span class="number">0</span>,size<span class="number">-1</span>,n);</span><br><span class="line">    <span class="comment">// Add your code above this line. Do not modify any other code.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>However, this problem has another more difficult edition. (Some wrong with the examples in the description at the original, I fixed it up)</p>
+<p>Description:</p>
+<blockquote>
+<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>. And a number that <code>must_have</code>.<br>Assume <code>target</code> is always a positive number.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>The <code>must_have</code> means that in this element, you cannot ignore it, you must use it. So while the <code>arr[sz-1]==must_have</code>, there will be only one return: <code>group_sum_with_num(arr,sz-1,must_have,target_sum-must_have);</code>. Other part is similar with the previous one.</p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum_with_num</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> must_have, <span class="keyword">int</span> target_sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target_sum==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[sz<span class="number">-1</span>]==must_have)</span><br><span class="line">        <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum-must_have);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum) || group_sum_with_num(arr,sz- <span class="number">1</span>,must_have,target_sum-arr[sz<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/22/Binary%20Search%20-%20Integer%20Array/" data-id="ckk7vq0oi0000eswr3w1m0smf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/22/Subset%20Summation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Subset Summation</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firecode-coding/">Firecode coding</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/">Binary Search - Integer Array</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/22/Subset%20Summation/">Subset Summation</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/">Find the Level that has the Maximum Sum</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/20/Making%20Change/">Making change</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 ZhangShuaiGou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

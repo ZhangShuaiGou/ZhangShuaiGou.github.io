@@ -64,6 +64,175 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Repeated Elements in an Array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/" class="article-date">
+  <time datetime="2021-01-17T01:37:08.609Z" itemprop="datePublished">2021-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/">Repeated Elements in an Array</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Write a function to find the redundant or repeated elements in an array.<br>Save the set of redundant numbers in the given output array in ascending order.<br>If no element is repeated return NULL</p>
+</blockquote>
+<blockquote>
+<p>Examples:</p>
+<p>remove_dup({3,1,2,4,1}, 5) ==&gt; {1}<br>remove_dup({1,2,4,4,5,6,2,1}, 8) ==&gt; {1,2,4}</p>
+</blockquote>
+<p>This problem is easy to solve. Only sparking light is how to initialize a <strong><em>Dynamic Array</em></strong>. Here is a <a target="_blank" rel="noopener" href="https://www.cplusplus.com/doc/tutorial/dynamic/">link</a> talk this special array in more detail.</p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">remove_dup</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;    <span class="comment">/* Alocate the memory of Output array of maximum size n. </span></span><br><span class="line"><span class="comment">    Fill the new array with unique elements, which have duplicates entries in input array </span></span><br><span class="line"><span class="comment">    Size of Output array will be less than n. */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//create and initial the Dynamic Array.</span></span><br><span class="line">    <span class="keyword">int</span> *output = <span class="literal">NULL</span>;</span><br><span class="line">    output = <span class="keyword">new</span> <span class="keyword">int</span> [sz];</span><br><span class="line">    <span class="built_in">std</span>::sort(A,A+sz);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;sz;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i]==A[i<span class="number">-1</span>] &amp;&amp; flag == <span class="number">0</span>)&#123;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">            output[idx++] = A[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(A[i]!=A[i<span class="number">-1</span>] &amp;&amp; flag == <span class="number">1</span>)&#123;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/17/Repeated%20Elements%20in%20an%20Array/" data-id="ckk0zruzl00031owrckyc9rnv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mobile Game Range Module - Merging Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" class="article-date">
+  <time datetime="2021-01-16T07:51:14.104Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The problem description is:</p>
+<blockquote>
+<p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - merge_intervals that takes in a vector of integer Interval s (aka ranges), and returns a vector of sorted Interval s where all overlapping intervals have been merged. The Interval class is available by clicking Use Me.</p>
+</blockquote>
+<blockquote>
+<p>Note:<br>a) [1,3] represents an interval that includes 1, 2 and 3.<br>b) Intervals should be sorted based on the value of start</p>
+</blockquote>
+<blockquote>
+<p>Examples:<br>Input: [ [1,3], [2,5] ], Output: [ [1,5] ]<br>Input: [ [3,5], [1,2] ], Output: [ [1,2], [3,5] ]</p>
+</blockquote>
+<p>This problem is quite simple. However, through this problem I have learnt about sorting objects in vector. The solution is firstly write a helper to merge two <code>Interval</code> objects as one. And then sort the input <code>intervals_list</code> to ensure all the elements are sorted and create a new vector of <code>Interval</code> to store the result. Next, create a temp <code>Interval</code> object, assign it as <code>intervals_list[0]</code>. Compare this temp with every <code>Interval</code> object, if the next element is mergeable, merge it; if not, push the current temp to <code>result</code> and assign temp with current element. At last, push the temp to result for flushing the buffer.  </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="function">Interval <span class="title">re</span><span class="params">(a.start,b.end)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Add any helper functions(if needed) above.</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">merge_intervals</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (intervals_list.empty())&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start,intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Sort the input vector as ascending.</span></span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;intervals_list.size();i++)&#123;</span><br><span class="line">        <span class="comment">//if current element is mergeable, merge it.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end &gt;= intervals_list[i].start &amp;&amp; tmp.end&lt;intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp,intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//if current element is not mergeable, push temp to result and assign current element to temp.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end&lt;intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];           </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);<span class="comment">//flush the buffer.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Nothing challenging but I failed at first because I forgot to flush the buffer. And how to sort objects in vector is new to me. </p>
+<p>The time complexity is <strong><em>O(n)</em></strong>. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" data-id="ckjzfjw2z000000wr05y7fwc9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Count paths on a game board" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" class="article-date">
+  <time datetime="2021-01-16T04:24:30.337Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/16/Count%20paths%20on%20a%20game%20board/">Count Paths on a Game Board</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today, I practiced an interesting problem in <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index">Firecode.com</a>.</p>
+<p>The description of the question is:</p>
+<blockquote>
+<p>You’re given a game board that has m x n squares on it, represented by an m x n array. Write a method - <strong><em>count_paths</em></strong> that takes in m and n and returns the number of possible paths from the top left corner to the bottom right corner. Only down and right directions of movement are permitted.</p>
+</blockquote>
+<p>In other words, given a matrix [m,n] and output the distinct paths from [0,0] to [m,n]. </p>
+<p>At the beginning, I was thinking about using a tree to represent all the decisions - because <em>only down and right directions are permitted</em>. I noticed an interesting thing, that is once we need to reach to <em>[m,n]</em>, we have to approach <em>[m,n-1]</em> and <em>[m-1,n]</em> and the number of paths reaching <em>[m,n]</em> equals the paths reaching <em>[m,n-1]</em> <strong>+</strong> <em>[m-1,n]</em>. It looks like we can solve it via <strong><em>recursion</em></strong> way. So, the code is shown following: </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_paths</span><span class="params">(<span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//There will only one path when there is only one row or one col.</span></span><br><span class="line">    <span class="keyword">if</span>(rows==<span class="number">1</span> || cols==<span class="number">1</span>)</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//Otherwise resolve the problem recursively. </span></span><br><span class="line">    <span class="keyword">return</span> count_paths(rows, cols<span class="number">-1</span>) + count_paths(rows<span class="number">-1</span>, cols);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This solution works well in normal cases. However, when the test cases are relatively large,  <em>[15,16]</em> and <em>[18,17]</em> for example, this solution will fail in time condition. So I have to find another way to figure it out. </p>
+<p>Lastly, I have found a solution via <strong><em>Dynamic programming</em></strong>. The idea is quite similar with the recursion, however, in this solution, each cell (<em>[i,j]</em>) store the number of paths to the cell. In the end, the value stored in desired cell is the answer. </p>
+<p>The code shown below:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_paths</span><span class="params">(<span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Create the vector to store the result. Initial all the elements as 1.</span></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">result</span><span class="params">(rows,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; (cols,<span class="number">1</span>))</span></span>; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;rows;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;cols;j++)&#123;</span><br><span class="line">            result[i][j] = result[i<span class="number">-1</span>][j] + result[i][j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result[rows<span class="number">-1</span>][cols<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This solution passed all the test cases. </p>
+<h4>Now, we have to think about why the second solution is faster than the first. </h4>
+
+<p>Here is a <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/63075755">link</a> shows plenty discussion about the Time Complexity of this question. </p>
+<p>In conclusion, the time complexity of the first solution is <em>O(2<sup>m+n</sup>)</em>. Because for every single time, the function <code> count_paths</code> will run twice. There are <em>m</em> <strong>+</strong> <em>n</em> times in total. However, we can use some strategy to prune the algorithm. It doesn’t improve too much. Especially when the <em>m</em> and <em>n</em> grows larger and larger.</p>
+<p>However, the time complexity of the second solution is <em>O(m\</em>n)*. Because there are only two <code>for()</code> loops in the solution. </p>
+<p>Apparently, the <em>O(2<sup>m+n</sup>)</em> will be extremely larger than <em>O(m\</em>n)* when the <em>m</em> and <em>n</em> grows larger.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/Count%20paths%20on%20a%20game%20board/" data-id="ckjzazq9g0000rswrbu4r48ue" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hello-World-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/09/Hello-World-0/" class="article-date">
@@ -156,23 +325,23 @@
       <ul>
         
           <li>
+            <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/">Binary Search - Integer Array</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/22/Subset%20Summation/">Subset Summation</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/">Find the Level that has the Maximum Sum</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
           </li>
         
           <li>
             <a href="/2021/01/20/Making%20Change/">Making change</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/18/Theme%20change%20plan/">Theme change plan</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
           </li>
         
       </ul>
