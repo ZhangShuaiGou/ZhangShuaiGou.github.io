@@ -64,6 +64,180 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Iterative BST Validation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/18/Iterative%20BST%20Validation/" class="article-date">
+  <time datetime="2021-01-18T05:04:15.050Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/18/Iterative%20BST%20Validation/">Iterative BST Validation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today’s problem is a classic problem, validate a BST. </p>
+<p>Description:</p>
+<blockquote>
+<p>Given the root node of a <strong>Binary Tree</strong>, write a method - <code>validate_bst_itr</code> to <strong>iteratively</strong> determine if it is a Binary <strong>Search</strong> Tree.</p>
+<p><strong>A <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">BST</a> must satisfy the following conditions :</strong><br>* The left subtree of a node contains nodes with data &lt; its data.<br>* The right subtree of a node contains  nodes data &gt; its data.<br>* A node’s left and right subtrees follow the above two conditions.</p>
+<p><strong>Examples:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">       20</span><br><span class="line">      &#x2F;   \</span><br><span class="line">    15    30</span><br><span class="line">   &#x2F;  \</span><br><span class="line">  14  18     </span><br><span class="line"></span><br><span class="line"> output &#x3D;&#x3D;&gt; true</span><br><span class="line"></span><br><span class="line">       20</span><br><span class="line">      &#x2F;   \</span><br><span class="line">    30    15 </span><br><span class="line">   &#x2F;  \                           </span><br><span class="line">  14  18     </span><br><span class="line"></span><br><span class="line">output &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>There are several methods to figure it out. I used recursive approach. </p>
+<p>The key point is the <code>left-&gt;value</code> is always less than the <code>root-&gt;value</code> and the <code>right-&gt;value</code> is always greater than <code>root-&gt;value</code>. Construct the recursive function based on this rule.  </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(treeNode* nd, <span class="keyword">int</span> max, <span class="keyword">int</span> min)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(nd==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(nd-&gt;value&gt;max)	<span class="comment">//for every left child, there is a maximum.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(nd-&gt;value&lt;min)	<span class="comment">//for every right child, there is a minimum.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(nd-&gt;left, nd-&gt;value, min) &amp;&amp; helper(nd-&gt;right, max, nd-&gt;value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">validate_bst_itr</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">//INT_MAX is the system pre-defiend max of int, so does INT_MIN.</span></span><br><span class="line">    <span class="comment">//the max and min will be updated by every layer of recursion.</span></span><br><span class="line">    <span class="keyword">return</span> helper(root,INT_MAX,INT_MIN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, when I submitted this solution, I noticed that the problem was asking us to solve it via <strong>iteratively</strong> instead of recursively. Therefore I learned about the following solution, which via <strong><em>In-Order traversal</em></strong>.  The steps or ideas can be found this <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/">link</a> and this <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/c_zCrGHIVlBjUH_hJtghCg">link</a>. </p>
+<p><strong>Step 1:</strong> Create stack to store the nodes.</p>
+<p><strong>Step 2:</strong> Push the root node and the left child, and the left children of left child… I used <code>root = root-&gt;left</code>, however, it could be a pointer like <code>cur_nd = root-&gt;left</code> and <code>cur_nd = cur_nd-&gt;left</code> to make the code more readable.   </p>
+<p><strong>Step 3:</strong> This push will stop at there is no left child among the  left children of <code>root</code> node. Now, the top of the stack is the “root” node of the last “left node”.  Then pop this node and make its right child as the new <code>cur_nd</code> and go back to step 2. </p>
+<p><strong>Step 4:</strong> So long, we only need to check whether the current node’s value is smaller than previous node’s. Because for the BST, the value of node will be displayed as ascend. </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">validate_bst_itr</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">stack</span>&lt;treeNode*&gt; sta;</span><br><span class="line">    <span class="keyword">int</span> min = INT_MIN;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//In-order traversal</span></span><br><span class="line">    <span class="keyword">while</span>(!sta.empty() || root!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="comment">//step 2: push all &quot;left nodes&quot; to stack firstly</span></span><br><span class="line">        <span class="keyword">while</span>(root!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            sta.push(root);</span><br><span class="line">            root = root-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//step 3: explore the top node.</span></span><br><span class="line">        <span class="comment">//the top could be left node or a root/middle node</span></span><br><span class="line">        root = sta.top();</span><br><span class="line">        sta.pop();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//check whether the value is smaller than previous&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;value &lt;= min)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//update the &quot;previou&#x27;s value&quot;.</span></span><br><span class="line">        min = root-&gt;value;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//step 3: to push the right node of last node. </span></span><br><span class="line">        <span class="comment">//then start from step 2, namely, the begin of the while loop.</span></span><br><span class="line">        root = root-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>I have to say that, although this kind of traversal methods I have learnt in university, I forgot them at all. I am planning to take some time to review about it.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Iterative%20BST%20Validation/" data-id="ckk2cvyco000020wrgkdm4ks6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1-800-PROBLEM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/17/1-800-PROBLEM/" class="article-date">
+  <time datetime="2021-01-17T10:18:13.719Z" itemprop="datePublished">2021-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/17/1-800-PROBLEM/">1-800-PROBLEM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today I have reached to level 4 in Firecode. The first problem is quite challenging. I have no idea to figure it out, so I search it online for solution. And I leaned from the solution and write down my solution.</p>
+<p>Description:</p>
+<blockquote>
+<p>Given a <code>string</code> that represents the digits pressed on a classic cell phone keypad - return all possible letter <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">combinations</a> that the numbers could represent in an <code>vector</code> of <code>string</code>s. Check out the keypad and mapping below for reference.<br><img src="https://www.firecode.io/assets/problems/keypad.png" alt="img"><br><strong>Note:</strong><br>a) You can assume that the input String contains only numbers between 2 and 9.<br>b) The order of the <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">combinations</a> in the output does not matter.</p>
+</blockquote>
+<p>Firstly, I misunderstood the problem. I thought I need to pair every number with another number from the <code>digits</code>, so my first idea is apply nested <code>for()</code> loop to figure it. However, it is definitely wrong. Because then I realised that the question was not asking me to pair elements two by two, but to form as long a <code>string</code> as there were elements. So, the required nested <code>for()</code> loops as much as the elements number in <code>digits</code>, which is not predictable and impossible to program. </p>
+<p>Then I struggled with it, I did not realize that to use recursive method till I searched online. I have found the solution and explanation of this problem in <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/find-possible-words-phone-digits/">GeeksForGeeks</a>. BTW, this website is amazing for learning programming. </p>
+<p>The basic idea of this solution is replace the <code>for()</code> loop with recursions. Now I think about it, I should have actually thought of the recursive approach when I realised I needed multiple layers of loops. </p>
+<p>In the recursive function, there are five parameters past-in: <code>string tmp</code> for store the combined strings. <code>vector&lt;string&gt; &amp;mp</code> for the mapping of phone number to the alphabets, it contains two empty strings at front, so that for example the <code>mp[2]</code> will correspond exactly to the keypad 2, which mapping to “ABC”.  <code>int cur_idx</code> for mark the current position of <code>digits</code>. <code>string digits</code> is from the question input. <code>vector&lt;string&gt; &amp;result</code> to store the result, that is every finished <code>tmp</code>. </p>
+<p>Firstly, it need to be determined that whether the <code>cur_idx</code> is beyond the length of <code>digits</code>. If ‘YES’, it means the current <code>tmp</code> is finished, it should be push into the <code>result</code> vector, then start the next round for the other combinations. </p>
+<p>If ‘NO’, that means we need to keep going and finish this round. So we need to find the alphabets to be combined in this round. According to the  <code>mp</code>, we can easily find the alphabets mapping to the current digit in <code>digits</code>. </p>
+<p>Then here will be a <code>for()</code> loop to combine each single alphabet to the <code>tmp</code>. During this process, a new or longer <code>tmp</code> is created, however, our goal is the make the size of  <code>tmp</code> equals to <code>digits</code>. So, in this loop, for every single alphabet, we need to call this function again to help us finish the task.</p>
+<p>Now, the recursion is built and the problem solved.</p>
+<p>After I learned from the solution, I finished my solution. </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">string</span> tmp, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; mp, <span class="keyword">int</span> cur_idx, <span class="built_in">string</span> digits, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;result)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur_idx==tmp.size())&#123;</span><br><span class="line">        result.push_back(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> key = digits[cur_idx]-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;mp[key].size();i++)&#123;</span><br><span class="line">        tmp[cur_idx] = mp[key][i];</span><br><span class="line">        helper(tmp,mp,cur_idx+<span class="number">1</span>,digits,result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">get_strings_from_nums</span><span class="params">(<span class="built_in">string</span> digits)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; mp = &#123;<span class="string">&quot;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;def&quot;</span>,<span class="string">&quot;ghi&quot;</span>,<span class="string">&quot;jkl&quot;</span>,<span class="string">&quot;mno&quot;</span>,<span class="string">&quot;pqrs&quot;</span>,<span class="string">&quot;tuv&quot;</span>,<span class="string">&quot;wxyz&quot;</span>&#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; result;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(digits.size()==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">tmp</span><span class="params">(digits.size(), <span class="string">&#x27; &#x27;</span>)</span></span>; <span class="comment">//create string as same size as digits and fill with &#x27; &#x27;.</span></span><br><span class="line">    <span class="keyword">int</span> cur_idx = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    helper(tmp,mp,cur_idx,digits,result);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>The solution above is via recursion method. I will try another method via DFS and verify it later. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/17/1-800-PROBLEM/" data-id="ckk0zruz700001owr82pa7dn3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Find the Number that Appears Once" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/17/Find%20the%20Number%20that%20Appears%20Once/" class="article-date">
+  <time datetime="2021-01-17T02:05:32.347Z" itemprop="datePublished">2021-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/17/Find%20the%20Number%20that%20Appears%20Once/">Find the Number that Appears Once</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Write a method that returns a number that appears only once in an array.<br>Assume the array will surely have a unique value. If the array is empty return 0.</p>
+<p>Examples:</p>
+<p>{1,2,3,4,1,2,4,3,5} ==&gt; 5</p>
+</blockquote>
+<p>Firstly, sort the input array. Then create a <code>int tmp</code> to store current compare target and a <code>int dup</code> to flag whether current element duplicated. In the end, return the <code>tmp</code> as the answer.</p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">single_number</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::sort(arr, arr+sz);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">int</span> tmp = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> dup = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;sz;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(dup==<span class="number">0</span> &amp;&amp; arr[i]==tmp)&#123;</span><br><span class="line">            dup = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(dup==<span class="number">1</span> &amp;&amp; arr[i]!=tmp)&#123;</span><br><span class="line">            dup = <span class="number">0</span>;</span><br><span class="line">            tmp = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/17/Find%20the%20Number%20that%20Appears%20Once/" data-id="ckk0zruzf00011owr1dyp3346" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Repeated Elements in an Array" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/" class="article-date">
@@ -325,23 +499,23 @@
       <ul>
         
           <li>
+            <a href="/2021/01/24/Recursive%20String%20Permutation/">Recursive String Permutation</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/23/Recursive%20Pre-order%20Traversal/">Recursive Pre-order Traversal</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/22/Find%20the%20kth%20Largest%20Node%20of%20a%20BST/">Find the kth Largest Node of a BST</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/">Binary Search - Integer Array</a>
           </li>
         
           <li>
             <a href="/2021/01/22/Subset%20Summation/">Subset Summation</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/">Find the Level that has the Maximum Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/20/Making%20Change/">Making change</a>
           </li>
         
       </ul>
