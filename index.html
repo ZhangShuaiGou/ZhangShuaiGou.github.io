@@ -64,6 +64,262 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-POW!" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/POW!/" class="article-date">
+  <time datetime="2021-02-03T04:16:10.422Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/POW!/">POW!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Write a function - power(x,n) that returns the value of x raised to the power of n (xn). n can be negative!</p>
+<p>Example:</p>
+<p><code>power(2,3) ==&gt; 8.0</code></p>
+</blockquote>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt; 				//for using abs().</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">power</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> re = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">abs</span>(n);i++)&#123;</span><br><span class="line">        re *=x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> n&lt;<span class="number">0</span> ? <span class="number">1.0</span>/re : re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/03/POW!/" data-id="ckkoydjno0004acwrfeoz7urd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Find the Missing Number from 1 to N+1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/" class="article-date">
+  <time datetime="2021-02-03T01:55:03.894Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/">Find the Missing Number from 1 to N+1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Given an array of n integers in the range - <code>1 to n+1</code>, write a function to find and return the missing number in the array.<br>There are no duplicates in the array, and only one number is missing.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;Examples: </span><br><span class="line"></span><br><span class="line">&gt;find_missing_number(&#123;1,2,3,5,6,7,8&#125;, 7) &#x3D;&#x3D;&gt; 4</span><br><span class="line"></span><br><span class="line">&gt;find_missing_number(&#123;1,2,3,4,5,6,7,8,10&#125;, 9) &#x3D;&#x3D;&gt; 9</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find_missing_number</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> re;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i]-i!=<span class="number">1</span>)&#123;</span><br><span class="line">            re = arr[i]<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/" data-id="ckkoydjnn0002acwrcqiugxg1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Even Split" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/Even%20Split/" class="article-date">
+  <time datetime="2021-02-03T01:34:54.506Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/Even%20Split/">Even Split</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Write a function to determine if it is possible to split<br>an array of integers <code>arr</code> with its size <code>sz</code> into two parts such that the sum of all integers in each part is the same. An empty array cannot be split.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;split_array(&#123;1,2,3,4&#125;,3) &#x3D;&#x3D;&gt; true</span><br><span class="line">&gt;split_array(&#123;1,2,4&#125;,3) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>This problem is similar to the <strong>Subset Summation</strong>. The difference is you need to count the <code>sum</code> of the <code>arr[]</code> and the <code>sum/2</code> is the target sum for the <strong>Subset Summation</strong>. </p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//The same solution in Subser Summation problem</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(arr, sz<span class="number">-1</span>, target-arr[sz<span class="number">-1</span>]) || helper(arr, sz<span class="number">-1</span>,target);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">split_array</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> arr_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//Count the sum of arr[].</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;sz; i++)&#123;</span><br><span class="line">        arr_sum+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//If the sum of arr cannot be even divided, return false.</span></span><br><span class="line">    <span class="keyword">if</span>(arr_sum%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Otherwise, returen the result to find the subset according to the sum/2.</span></span><br><span class="line">    <span class="keyword">return</span> helper(arr,sz,arr_sum/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This problem cost me lot of time. The stupid mistake I made is to thinking about how to find the </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/03/Even%20Split/" data-id="ckkoydjnk0000acwr0q29hh16" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Pascal&#39;s Triangle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/Pascal's%20Triangle/" class="article-date">
+  <time datetime="2021-02-03T01:15:00.690Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/Pascal's%20Triangle/">Pascal&#39;s Triangle</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Given an input parameter <code>num_rows</code>, generate the first <code>num_rows</code> number of rows of <strong>Pascal’s</strong> triangle.<br>As a quick refresher - in a Pascal’s triangle, each number is equal to the sum of the two directly above it.</p>
+<p><img src="https://www.firecode.io/assets/problems/pascals-triangle.gif" alt="img"></p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;Input  : 4  </span><br><span class="line">&gt;Output : </span><br><span class="line">       [</span><br><span class="line">            [1],</span><br><span class="line">           [1,1],</span><br><span class="line">          [1,2,1],</span><br><span class="line">         [1,3,3,1]</span><br><span class="line">        </span><br><span class="line">       ]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>This problem is quite like the <strong><em>Dynamic Programming</em></strong> method in the problem <strong><em>Count paths on a game board</em></strong>. It is not difficult to solve. </p>
+<p>The keypoint is to initialize the <code>result</code> vector. I did not initialize the vector at beginning, I just push the vectors while I am creating it, which the space complexity <strong>S(n)</strong> is <em>n</em>. However, the other way is to initialize the vector at beginning, which the <strong>S(n)</strong> is <em>2n</em>. </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">generate_pascal_triangle</span><span class="params">(<span class="keyword">int</span> num_rows)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">    <span class="keyword">if</span>(num_rows==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num_rows;i++)&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rows;</span><br><span class="line">        <span class="keyword">if</span>(num_rows==<span class="number">1</span>)&#123;</span><br><span class="line">            rows.push_back(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || j==i)&#123;</span><br><span class="line">                    rows.push_back(<span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                rows.push_back(result[i<span class="number">-1</span>][j<span class="number">-1</span>] + result[i<span class="number">-1</span>][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.push_back(rows);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/03/Pascal's%20Triangle/" data-id="ckkoydjnp0005acwr671bc972" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Maximum Sum in an Array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/01/Maximum%20Sum%20in%20an%20Array/" class="article-date">
+  <time datetime="2021-02-01T04:47:29.098Z" itemprop="datePublished">2021-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/01/Maximum%20Sum%20in%20an%20Array/">Maximum Sum in an Array</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<blockquote>
+<p>Given an array consisting of both positive and negative integers, find the <strong>maximum sum</strong> among all the contiguous <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">subsequences</a> of the input array.<br>Write a function that takes in an array of integers <code>arr</code> with the size <code>sz</code> and returns the maximum sum.<br>For an empty array, return 0. The maximum and minmimum possible numbers in the array can be <strong>999</strong> and <strong>-999</strong></p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;max_sum_cont_sequence(&#123;-2,11,-4,13,-5,-2&#125;,6) --&gt; 20  (maximum sequence is : &#123;11,-4,13&#125;)&#96;</span><br><span class="line">&gt;&#96;max_sum_cont_sequence(&#123;1,-3,4,-2,-1,6&#125;,6) --&gt; 7    (maximum sequence is : &#123;4,-2,-1,6&#125;)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>This problem is quite similar to the other recursion problem, like making change or subset summation. The only difference is to record the sum of each subset.</p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;			//for using INT_MIN</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_sum</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> s, <span class="keyword">int</span> e)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s; i&lt;=e;i++)&#123;</span><br><span class="line">        sum+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> cur, <span class="keyword">int</span> &amp;max)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur==sz)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp = get_sum(arr,cur,sz<span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(tmp &gt;= max)</span><br><span class="line">        max = tmp;</span><br><span class="line">    </span><br><span class="line">    helper(arr, sz<span class="number">-1</span>,cur, max);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max_sum_cont_sequence</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> max = INT_MIN;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;sz; i++)&#123;</span><br><span class="line">        helper(arr, sz, i, max);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, this kind of problem always could be figured in <strong><em>Dynamic Programming</em></strong> and get a better solution. </p>
+<p>This <strong><em>Dynamic Programming</em></strong> algorithm is called <em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm">kadane algorithm</a></em>. </p>
+<p>The idea of this algorithm is to record the sum of subset stop at the current element. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max_sum_cont_sequence</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> cur_max = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> _max = cur_max;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;sz;i++)&#123;</span><br><span class="line">        cur_max = max(cur_max+arr[i],arr[i]);</span><br><span class="line">        _max = max(cur_max,_max);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/01/Maximum%20Sum%20in%20an%20Array/" data-id="ckkoydjno0003acwrbrm1ad0h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Recursive String Permutation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/24/Recursive%20String%20Permutation/" class="article-date">
@@ -257,20 +513,6 @@
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ool <span class="title">helper</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(high&lt;low)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==arr[mid])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[mid]&gt;n)</span><br><span class="line">        <span class="keyword">return</span> helper(arr, low, mid<span class="number">-1</span>, n);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> helper(arr, mid+<span class="number">1</span>, high, n);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Add your code below this line. Do not modify any other code.                   </span></span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(arr,<span class="number">0</span>,size<span class="number">-1</span>,n);</span><br><span class="line">    <span class="comment">// Add your code above this line. Do not modify any other code.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<p>However, this problem has another more difficult edition. (Some wrong with the examples in the description at the original, I fixed it up)</p>
-<p>Description:</p>
-<blockquote>
-<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>. And a number that <code>must_have</code>.<br>Assume <code>target</code> is always a positive number.</p>
-<p>Examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>The <code>must_have</code> means that in this element, you cannot ignore it, you must use it. So while the <code>arr[sz-1]==must_have</code>, there will be only one return: <code>group_sum_with_num(arr,sz-1,must_have,target_sum-must_have);</code>. Other part is similar with the previous one.</p>
-<p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum_with_num</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> must_have, <span class="keyword">int</span> target_sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target_sum==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[sz<span class="number">-1</span>]==must_have)</span><br><span class="line">        <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum-must_have);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum) || group_sum_with_num(arr,sz- <span class="number">1</span>,must_have,target_sum-arr[sz<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
       
     </div>
     <footer class="article-footer">
@@ -322,6 +564,19 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(target==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> group_sum(arr, size<span class="number">-1</span>, target) || group_sum(arr, size<span class="number">-1</span>, target-arr[size<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<p>However, this problem has another more difficult edition. (Some wrong with the examples in the description at the original, I fixed it up)</p>
+<p>Description:</p>
+<blockquote>
+<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>. And a number that <code>must_have</code>.<br>Assume <code>target</code> is always a positive number.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>The <code>must_have</code> means that in this element, you cannot ignore it, you must use it. So while the <code>arr[sz-1]==must_have</code>, there will be only one return: <code>group_sum_with_num(arr,sz-1,must_have,target_sum-must_have);</code>. Other part is similar with the previous one.</p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum_with_num</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> must_have, <span class="keyword">int</span> target_sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target_sum==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[sz<span class="number">-1</span>]==must_have)</span><br><span class="line">        <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum-must_have);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum) || group_sum_with_num(arr,sz- <span class="number">1</span>,must_have,target_sum-arr[sz<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
@@ -335,260 +590,11 @@
 
 
   
-    <article id="post-Find the Level that has the Maximum Sum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/" class="article-date">
-  <time datetime="2021-01-22T02:20:49.881Z" itemprop="datePublished">2021-01-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/">Find the Level that has the Maximum Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Description:</p>
-<blockquote>
-<p>Given a <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">binary tree</a>, write a method to return the level that has the maximum sum. In case the tree is empty, return <strong>-1</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;Example:  </span><br><span class="line">      1</span><br><span class="line">     &#x2F; \</span><br><span class="line">    2   3     </span><br><span class="line">   &#x2F; \ &#x2F; \  </span><br><span class="line">  4  5 6  7</span><br><span class="line"> &#x2F;</span><br><span class="line">8   </span><br><span class="line"></span><br><span class="line">&gt;Output &#x3D;&#x3D;&gt; 2 </span><br></pre></td></tr></table></figure>
-
-<p><strong>Note:</strong> Assume that root is at level 0.</p>
-</blockquote>
-<p>The keypoint of this problem is how to mark each later of the tree and record the <code>cur_sum</code> of each layer. </p>
-<p>My idea is to use <code>queue</code> to store and explore every node. </p>
-<p>To determine the layers,  </p>
-<p>Code :</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find_max_sum_level</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">int</span> max = root-&gt;value;</span><br><span class="line">    <span class="keyword">int</span> cur_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> level = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max_level = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;treeNode*&gt; que;</span><br><span class="line"></span><br><span class="line">    que.push(root);</span><br><span class="line">    que.push(<span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        treeNode* tmp = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">if</span>(tmp==<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur_sum&gt;=max)&#123;</span><br><span class="line">                max = cur_sum;</span><br><span class="line">                max_level = level;</span><br><span class="line">            &#125;            </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(que.empty())</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            que.push(<span class="literal">NULL</span>);</span><br><span class="line">            </span><br><span class="line">            level++;</span><br><span class="line">            cur_sum = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            cur_sum+=tmp-&gt;value;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(tmp-&gt;left!=<span class="literal">NULL</span>)</span><br><span class="line">                que.push(tmp-&gt;left);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(tmp-&gt;right!=<span class="literal">NULL</span>)</span><br><span class="line">                que.push(tmp-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max_level;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/" data-id="ckk7vq0oo0001eswrb80xf16e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mobile Game Range Module - Inserting Ranges" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" class="article-date">
-  <time datetime="2021-01-21T00:34:45.901Z" itemprop="datePublished">2021-01-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/">Mobile Game Range Module - Inserting Ranges</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Description:</p>
-<blockquote>
-<p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - <code>insert_range</code> that takes in a <code>vector</code> of <strong>sorted, non-overlapping integer</strong> <code>Interval</code> s (aka ranges) and a new <code>Interval</code> - <code>insert</code>, and returns a <code>vector</code> of <strong>sorted</strong> <code>Interval</code> s where <code>insert</code> has been added to the <code>vector</code> in the correct spot and the required overlapping ranges have been merged. The <code>Interval</code> class is available by clicking <strong>Use Me</strong>. Target a time complexity of <strong>O(n)</strong>.</p>
-<p><strong>Note:</strong><br>a) [1,3] represents an interval that includes 1, 2 and 3.<br>b) Intervals should be sorted based on the value of <code>start</code><br>c) The words <strong>Range</strong> and <strong>Interval</strong> are used interchangeably</p>
-<p><strong>Examples:</strong><br>Inputs: [ [1,3], [7,10] ] &amp; [2,6], Output: [ [1,6], [7,10] ]</p>
-</blockquote>
-<p>This problem is quite same as the previous one <a target="_blank" rel="noopener" href="https://zhangshuaigou.github.io/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>. The only difference is: in this problem, we need to push the <code>insert_range</code> to the <code>interval_list</code> and the following step is exactly same with the <a target="_blank" rel="noopener" href="https://zhangshuaigou.github.io/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>.</p>
-<p>Code here:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Interval(a.start, b.end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">insert_range</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list, Interval insert)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    intervals_list.push_back(insert);	<span class="comment">//The only difference is here</span></span><br><span class="line">    <span class="keyword">if</span>(intervals_list.empty())</span><br><span class="line">        <span class="keyword">return</span> intervals_list;</span><br><span class="line">    </span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start, intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;intervals_list.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end&gt;=intervals_list[i].start &amp;&amp; tmp.end&lt;=intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp, intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tmp.end &lt; intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/21/Mobile%20Game%20Range%20Module%20-%20Inserting%20Ranges/" data-id="ckk64o01x0001ucwr6cprfawf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Making Change" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/20/Making%20Change/" class="article-date">
-  <time datetime="2021-01-20T00:21:57.320Z" itemprop="datePublished">2021-01-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/20/Making%20Change/">Making change</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today’s problem is quite like the <strong>1-800-Problem</strong>.</p>
-<p>Description here:</p>
-<blockquote>
-<p>Given an array containing the available denominations of coins in descending order, write a function to compute the number of possible ways of representing a monetary <code>amount</code> in cents.<br> For simplicity, assume that there are an infinite number of coins available for each coin denomination in the array.</p>
-<p>Examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make_change(&#123;25,10,5,1&#125;, 4, 10) &#x3D;&#x3D;&gt; 4  </span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>Code here:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> coins[], <span class="keyword">int</span> cur_idx, <span class="keyword">int</span> n, <span class="keyword">int</span> amount)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur_idx==n)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span>(amount&lt;<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(amount==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(coins, cur_idx, n, amount-coins[cur_idx]) + helper(coins, cur_idx+<span class="number">1</span>, n, amount);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">make_change</span><span class="params">(<span class="keyword">int</span> coins[], <span class="keyword">int</span> n, <span class="keyword">int</span> amount)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> helper(coins, <span class="number">0</span>, n, amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>I will explain it later. </p>
-<p>Now I have to work hard on my paper. Recently, I am thinking of starting another kind of blog – <strong><em>Paper reading</em></strong> to record my useful paper and take the notes. Because I have found it is time to boost my research study. </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/20/Making%20Change/" data-id="ckk64o01p0000ucwr1uqh3jny" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Find the Lowest Common Ancestor of two Tree Nodes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" class="article-date">
-  <time datetime="2021-01-19T03:35:10.020Z" itemprop="datePublished">2021-01-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/">Find the Lowest Common Ancestor of two Tree Nodes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today’s programming practice is  <strong><em>Find the Lowest Common Ancestor of two Tree Nodes</em></strong>.</p>
-<p>Description here:</p>
-<blockquote>
-<p>Given a <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">binary tree</a> and the data values of two tree nodes, implement a function to find and return the <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">LCA</a> (Lowest Common Ancestor) node of the two nodes. <code>a</code> and <code>b</code> are the data values of the two input nodes. Assume that nodes with the values <code>a</code> and <code>b</code> will surely exist in the tree.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Examples:</span><br><span class="line"></span><br><span class="line">       1              </span><br><span class="line">      &#x2F; \            </span><br><span class="line">     2   3     </span><br><span class="line">    &#x2F; \ &#x2F; \       </span><br><span class="line">   4  5 6  7         </span><br><span class="line">&#x3D;&#x3D;&gt; </span><br><span class="line">LCA of 6 and 4 is 1,</span><br><span class="line">    </span><br><span class="line">LCA of 4 and 5 is 2.</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>The approach I used is to record the path of the target <code>a</code> and <code>b</code>, and compare the two path, the last same node is the LCA of <code>a</code> and <code>b</code>. The point of this how to recursively record the path. </p>
-<p>Code here:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt; // for using min() function</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">get_path</span><span class="params">(treeNode* root, <span class="keyword">int</span> key, <span class="built_in">vector</span>&lt;treeNode*&gt; &amp;path)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    path.push_back(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(root-&gt;value==key)&#123;			<span class="comment">//In some cases, the two targets are parent-child relation, </span></span><br><span class="line">        path.push_back(root);		<span class="comment">//push double node to avoid the path stop at the &#x27;parent node&#x27;.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;				</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(get_path(root-&gt;left,key,path) || get_path(root-&gt;right,key,path))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    path.pop_back();		<span class="comment">//If cannot find target value under current node, remove this node. </span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">treeNode* <span class="title">find_lca</span><span class="params">(treeNode* root, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">vector</span>&lt;treeNode*&gt; path_a;</span><br><span class="line">    <span class="built_in">vector</span>&lt;treeNode*&gt; path_b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(!get_path(root,a,path_a) || !get_path(root,b,path_b))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;min(path_a.size(),path_b.size()); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(path_a[i]!=path_b[i])			<span class="comment">//Once find the diffence in the path, </span></span><br><span class="line">            <span class="keyword">return</span> path_a[i<span class="number">-1</span>];				<span class="comment">//return the previous one.</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>At first I failed in design the correct recursion function, then I searched it online and learned and corrected my solution from <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/">GeeksforGeeks</a> via this <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/">link</a>. </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/19/Find%20the%20Lowest%20Common%20Ancestor%20of%20two%20Tree%20Nodes/" data-id="ckk3gwhah0000ywwrabwz2oa4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Theme change plan" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/18/Theme%20change%20plan/" class="article-date">
-  <time datetime="2021-01-18T09:36:10.328Z" itemprop="datePublished">2021-01-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/About/">About</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/18/Theme%20change%20plan/">Theme change plan</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It is good time to change a better theme for my site. </p>
-<p>I searched around and decide to change my theme via <strong><em>NexT</em></strong>. I post the official link <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/">here</a> and another good blog demonstrate his design <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9f0e90cc32c2">here</a>. </p>
-<p>I will come back soon.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/18/Theme%20change%20plan/" data-id="ckk2doyax00003kwrbpakbwid" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -614,7 +620,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
     </div>
   </div>
 
@@ -627,23 +633,23 @@
       <ul>
         
           <li>
-            <a href="/2021/01/24/Recursive%20String%20Permutation/">Recursive String Permutation</a>
+            <a href="/2021/02/03/POW!/">POW!</a>
           </li>
         
           <li>
-            <a href="/2021/01/23/Recursive%20Pre-order%20Traversal/">Recursive Pre-order Traversal</a>
+            <a href="/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/">Find the Missing Number from 1 to N+1</a>
           </li>
         
           <li>
-            <a href="/2021/01/22/Find%20the%20kth%20Largest%20Node%20of%20a%20BST/">Find the kth Largest Node of a BST</a>
+            <a href="/2021/02/03/Even%20Split/">Even Split</a>
           </li>
         
           <li>
-            <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/">Binary Search - Integer Array</a>
+            <a href="/2021/02/03/Pascal's%20Triangle/">Pascal&#39;s Triangle</a>
           </li>
         
           <li>
-            <a href="/2021/01/22/Subset%20Summation/">Subset Summation</a>
+            <a href="/2021/02/01/Maximum%20Sum%20in%20an%20Array/">Maximum Sum in an Array</a>
           </li>
         
       </ul>
