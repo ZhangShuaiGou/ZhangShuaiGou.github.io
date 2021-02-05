@@ -64,6 +64,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mobile Game Range Module - Merging Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" class="article-date">
+  <time datetime="2021-01-16T07:51:14.104Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">Mobile Game Range Module - Merging Ranges</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The problem description is:</p>
+<blockquote>
+<p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - merge_intervals that takes in a vector of integer Interval s (aka ranges), and returns a vector of sorted Interval s where all overlapping intervals have been merged. The Interval class is available by clicking Use Me.</p>
+</blockquote>
+<blockquote>
+<p>Note:<br>a) [1,3] represents an interval that includes 1, 2 and 3.<br>b) Intervals should be sorted based on the value of start</p>
+</blockquote>
+<blockquote>
+<p>Examples:<br>Input: [ [1,3], [2,5] ], Output: [ [1,5] ]<br>Input: [ [3,5], [1,2] ], Output: [ [1,2], [3,5] ]</p>
+</blockquote>
+<p>This problem is quite simple. However, through this problem I have learnt about sorting objects in vector. The solution is firstly write a helper to merge two <code>Interval</code> objects as one. And then sort the input <code>intervals_list</code> to ensure all the elements are sorted and create a new vector of <code>Interval</code> to store the result. Next, create a temp <code>Interval</code> object, assign it as <code>intervals_list[0]</code>. Compare this temp with every <code>Interval</code> object, if the next element is mergeable, merge it; if not, push the current temp to <code>result</code> and assign temp with current element. At last, push the temp to result for flushing the buffer.  </p>
+<p>Code here:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="function">Interval <span class="title">re</span><span class="params">(a.start,b.end)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Add any helper functions(if needed) above.</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">merge_intervals</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (intervals_list.empty())&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start,intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Sort the input vector as ascending.</span></span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;intervals_list.size();i++)&#123;</span><br><span class="line">        <span class="comment">//if current element is mergeable, merge it.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end &gt;= intervals_list[i].start &amp;&amp; tmp.end&lt;intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp,intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//if current element is not mergeable, push temp to result and assign current element to temp.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end&lt;intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];           </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);<span class="comment">//flush the buffer.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Nothing challenging but I failed at first because I forgot to flush the buffer. And how to sort objects in vector is new to me. </p>
+<p>The time complexity is <strong><em>O(n)</em></strong>. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" data-id="ckjzfjw2z000000wr05y7fwc9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Count paths on a game board" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" class="article-date">
@@ -217,6 +273,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/05/Permutations!/">Permutations!</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/03/POW!/">POW!</a>
           </li>
         
@@ -230,10 +290,6 @@
         
           <li>
             <a href="/2021/02/03/Pascal's%20Triangle/">Pascal&#39;s Triangle</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/01/Maximum%20Sum%20in%20an%20Array/">Maximum Sum in an Array</a>
           </li>
         
       </ul>
