@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
 
-  
-  <title>Mobile Game Range Module - Merging Ranges | ZhangShuaiGou</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The problem description is:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task i">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="The problem description is:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mobile Game Range Module - Merging Ranges">
 <meta property="og:url" content="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/index.html">
@@ -15,83 +31,263 @@
 <meta property="og:description" content="The problem description is:  A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task i">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-16T07:51:14.104Z">
-<meta property="article:modified_time" content="2021-01-17T01:37:43.955Z">
+<meta property="article:modified_time" content="2021-02-06T02:13:48.768Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="ZhangShuaiGou" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.1.1"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">ZhangShuaiGou</a>
-      </h1>
-      
+<link rel="canonical" href="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Mobile Game Range Module - Merging Ranges | ZhangShuaiGou</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ZhangShuaiGou</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
         
-          <a class="main-nav-link" href="/">Home</a>
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZhangShuaiGou</p>
+  <div class="site-description" itemprop="description">Welcom to my page.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Mobile Game Range Module - Merging Ranges" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" class="article-date">
-  <time datetime="2021-01-16T07:51:14.104Z" itemprop="datePublished">2021-01-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Firecode-coding/">Firecode coding</a>
-  </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Mobile Game Range Module - Merging Ranges
-    </h1>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
   
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZhangShuaiGou">
+      <meta itemprop="description" content="Welcom to my page.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhangShuaiGou">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mobile Game Range Module - Merging Ranges
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-16 18:51:14" itemprop="dateCreated datePublished" datetime="2021-01-16T18:51:14+11:00">2021-01-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-06 13:13:48" itemprop="dateModified" datetime="2021-02-06T13:13:48+11:00">2021-02-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Firecode-coding/" itemprop="url" rel="index"><span itemprop="name">Firecode coding</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
       </header>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    
+    
+    <div class="post-body" itemprop="articleBody">
         <p>The problem description is:</p>
 <blockquote>
 <p>A Range Module is a module that tracks ranges of numbers. Range modules are used extensively when designing scalable online game maps with millions of players. Your task is to write a method - merge_intervals that takes in a vector of integer Interval s (aka ranges), and returns a vector of sorted Interval s where all overlapping intervals have been merged. The Interval class is available by clicking Use Me.</p>
@@ -102,6 +298,8 @@
 <blockquote>
 <p>Examples:<br>Input: [ [1,3], [2,5] ], Output: [ [1,5] ]<br>Input: [ [3,5], [1,2] ], Output: [ [1,2], [3,5] ]</p>
 </blockquote>
+<a id="more"></a>
+
 <p>This problem is quite simple. However, through this problem I have learnt about sorting objects in vector. The solution is firstly write a helper to merge two <code>Interval</code> objects as one. And then sort the input <code>intervals_list</code> to ensure all the elements are sorted and create a new vector of <code>Interval</code> to store the result. Next, create a temp <code>Interval</code> object, assign it as <code>intervals_list[0]</code>. Compare this temp with every <code>Interval</code> object, if the next element is mergeable, merge it; if not, push the current temp to <code>result</code> and assign temp with current element. At last, push the temp to result for flushing the buffer.  </p>
 <p>Code here:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// namespace std have been included for this problem.</span></span><br><span class="line"><span class="function">Interval <span class="title">merge</span><span class="params">(Interval a, Interval b)</span></span>&#123;</span><br><span class="line">    <span class="function">Interval <span class="title">re</span><span class="params">(a.start,b.end)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Add any helper functions(if needed) above.</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;Interval&gt; <span class="title">merge_intervals</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt; intervals_list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (intervals_list.empty())&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Interval <span class="title">tmp</span><span class="params">(intervals_list[<span class="number">0</span>].start,intervals_list[<span class="number">0</span>].end)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Sort the input vector as ascending.</span></span><br><span class="line">    sort(intervals_list.begin(), intervals_list.end(), [](<span class="keyword">const</span> Interval&amp; lhs, <span class="keyword">const</span> Interval&amp; rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.start &lt; rhs.start;</span><br><span class="line">    &#125;);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;intervals_list.size();i++)&#123;</span><br><span class="line">        <span class="comment">//if current element is mergeable, merge it.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end &gt;= intervals_list[i].start &amp;&amp; tmp.end&lt;intervals_list[i].end)&#123;</span><br><span class="line">            tmp = merge(tmp,intervals_list[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//if current element is not mergeable, push temp to result and assign current element to temp.</span></span><br><span class="line">        <span class="keyword">if</span>(tmp.end&lt;intervals_list[i].start)&#123;</span><br><span class="line">            result.push_back(tmp);</span><br><span class="line">            tmp = intervals_list[i];           </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result.push_back(tmp);<span class="comment">//flush the buffer.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -109,137 +307,112 @@
 <p>Nothing challenging but I failed at first because I forgot to flush the buffer. And how to sort objects in vector is new to me. </p>
 <p>The time complexity is <strong><em>O(n)</em></strong>. </p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/16/Mobile%20Game%20Range%20Module%20-%20Merging%20Ranges/" data-id="ckjzfjw2z000000wr05y7fwc9" class="article-share-link">Share</a>
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" rel="prev" title="Count Paths on a Game Board">
+                  <i class="fa fa-chevron-left"></i> Count Paths on a Game Board
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/" rel="next" title="Repeated Elements in an Array">
+                  Repeated Elements in an Array <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangShuaiGou</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">29k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">27 mins.</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/01/17/Repeated%20Elements%20in%20an%20Array/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Repeated Elements in an Array
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/01/16/Count%20paths%20on%20a%20game%20board/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Count Paths on a Game Board</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firecode-coding/">Firecode coding</a></li></ul>
     </div>
-  </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
 
 
   
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/02/05/Permutations!/">Permutations!</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/03/POW!/">POW!</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/">Find the Missing Number from 1 to N+1</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/03/Even%20Split/">Even Split</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/03/Pascal's%20Triangle/">Pascal&#39;s Triangle</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 ZhangShuaiGou<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
 
-
-
-
-  </div>
 </body>
 </html>
