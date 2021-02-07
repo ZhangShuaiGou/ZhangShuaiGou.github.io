@@ -31,7 +31,7 @@
 <meta property="og:description" content="Description:  Implement a method that checks if two strings are permutations of each other. permutation(&quot;CAT&quot;,&quot;ACT&quot;) --&gt; true 1&gt;permutation(&quot;hello&quot;,&quot;aloha&amp;quot">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-05T06:51:50.195Z">
-<meta property="article:modified_time" content="2021-02-06T02:13:37.288Z">
+<meta property="article:modified_time" content="2021-02-07T10:07:22.250Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
 
@@ -172,7 +172,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -250,7 +250,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-06 13:13:37" itemprop="dateModified" datetime="2021-02-06T13:13:37+11:00">2021-02-06</time>
+        <time title="Modified: 2021-02-07 21:07:22" itemprop="dateModified" datetime="2021-02-07T21:07:22+11:00">2021-02-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>670</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -301,6 +301,13 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">permutation</span><span class="params">(<span class="built_in">string</span> input1, <span class="built_in">string</span> input2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(input1.size()!=input2.size())		<span class="comment">//if size if different, it false;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum1 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sum2 = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;input1.size();i++)&#123;</span><br><span class="line">        sum1+=input1[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;input2.size();i++)&#123;</span><br><span class="line">        sum2 += input2[i] -<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> sum1==sum2;			<span class="comment">//return the boolean result</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<p><strong>Improvement</strong>:</p>
+<p>Actually we do not need to count two sum which cost <strong><em>O(2n)</em></strong>. A difference between two inputs will solve this problem. If two sums are equal, the difference between two should be zero in the end.</p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">permutation</span><span class="params">(<span class="built_in">string</span> input1, <span class="built_in">string</span> input2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(input1.size()!=input2.size())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> diff = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;input1.size();i++)&#123;</span><br><span class="line">        diff+=input1[i]-input2[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> diff==<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -318,6 +325,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/02/07/Selection%20Sort/" rel="next" title="Selection Sort">
+                  Selection Sort <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -372,14 +382,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">29k</span>
+    <span title="Symbols count total">31k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">27 mins.</span>
+    <span title="Reading time total">28 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>

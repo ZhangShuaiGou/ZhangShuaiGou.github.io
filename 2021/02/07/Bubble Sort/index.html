@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Description:  Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given target.Assume target">
+<meta name="description" content="Description:  Write a function that takes in an array of ints and the size of the array and uses the Bubble Sort algorithm to sort the array in ascending order.The function should return the same, in-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Subset Summation">
-<meta property="og:url" content="http://example.com/2021/01/22/Subset%20Summation/index.html">
+<meta property="og:title" content="Bubble Sort">
+<meta property="og:url" content="http://example.com/2021/02/07/Bubble%20Sort/index.html">
 <meta property="og:site_name" content="ZhangShuaiGou">
-<meta property="og:description" content="Description:  Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given target.Assume target">
+<meta property="og:description" content="Description:  Write a function that takes in an array of ints and the size of the array and uses the Bubble Sort algorithm to sort the array in ascending order.The function should return the same, in-">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-22T05:40:27.191Z">
-<meta property="article:modified_time" content="2021-02-06T02:13:02.549Z">
+<meta property="article:published_time" content="2021-02-07T10:49:31.171Z">
+<meta property="article:modified_time" content="2021-02-07T10:53:43.889Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/01/22/Subset%20Summation/">
+<link rel="canonical" href="http://example.com/2021/02/07/Bubble%20Sort/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'en'
   };
 </script>
-<title>Subset Summation | ZhangShuaiGou</title>
+<title>Bubble Sort | ZhangShuaiGou</title>
   
 
 
@@ -219,7 +219,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/Subset%20Summation/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/Bubble%20Sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +232,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Subset Summation
+          Bubble Sort
         </h1>
 
         <div class="post-meta-container">
@@ -242,16 +242,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-01-22 16:40:27" itemprop="dateCreated datePublished" datetime="2021-01-22T16:40:27+11:00">2021-01-22</time>
+      <time title="Created: 2021-02-07 21:49:31 / Modified: 21:53:43" itemprop="dateCreated datePublished" datetime="2021-02-07T21:49:31+11:00">2021-02-07</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-06 13:13:02" itemprop="dateModified" datetime="2021-02-06T13:13:02+11:00">2021-02-06</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -270,14 +264,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.7k</span>
+      <span>675</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -290,30 +284,15 @@
     <div class="post-body" itemprop="articleBody">
         <p>Description:</p>
 <blockquote>
-<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>.<br>Assume <code>target</code> is always a positive number.</p>
-<p>Examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+<p>Write a function that takes in an array of <code>int</code>s and the <code>size</code> of the array and uses the <strong><a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">Bubble Sort</a></strong> algorithm to sort the array in ascending order.<br>The function should return the <strong>same</strong>, in-place sorted array.</p>
+<p>Note: <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">Bubble sort</a> is one of the most inefficient ways to sort a large array of integers. Nevertheless, it is an interview favourite.<br><a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">Bubble sort</a> has a time complexity of <strong><em>O(n<sup>2</sup>)</em></strong>. However, if the sample size is small, <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">bubble sort</a> provides a simple implementation of a classic sorting algorithm.</p>
 </blockquote>
 <a id="more"></a>
 
-<p>This problem is quite same as the <code>Making change</code> problem.</p>
-<p>The basic idea is to determine whether the last element will be involved. </p>
 <p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(target==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> group_sum(arr, size<span class="number">-1</span>, target) || group_sum(arr, size<span class="number">-1</span>, target-arr[size<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">bubble_sort_array</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;size-i<span class="number">-1</span>;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])</span><br><span class="line">                swap(arr[j],arr[j+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<p>However, this problem has another more difficult edition. (Some wrong with the examples in the description at the original, I fixed it up)</p>
-<p>Description:</p>
-<blockquote>
-<p>Write a function to determine if it is possible to choose a subset of elements from a given array such that the sum of all numbers in the subset is equal to a given <code>target</code>. And a number that <code>must_have</code>.<br>Assume <code>target</code> is always a positive number.</p>
-<p>Examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;group_sum(&#123;1,2,3,6,5&#125;,5,5,10) &#x3D;&#x3D;&gt; true&#96;</span><br><span class="line">&gt;&#96;group_sum(&#123;1,2,3,6,5&#125;,5,5,18) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>The <code>must_have</code> means that in this element, you cannot ignore it, you must use it. So while the <code>arr[sz-1]==must_have</code>, there will be only one return: <code>group_sum_with_num(arr,sz-1,must_have,target_sum-must_have);</code>. Other part is similar with the previous one.</p>
-<p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">group_sum_with_num</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> must_have, <span class="keyword">int</span> target_sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target_sum==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(arr[sz<span class="number">-1</span>]==must_have)</span><br><span class="line">        <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum-must_have);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> group_sum_with_num(arr,sz<span class="number">-1</span>,must_have,target_sum) || group_sum_with_num(arr,sz- <span class="number">1</span>,must_have,target_sum-arr[sz<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>The time complexity is <strong><em>O(n<sup>2</sup>)</em></strong>.</p>
 
     </div>
 
@@ -327,14 +306,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/22/Find%20the%20Level%20that%20has%20the%20Maximum%20Sum/" rel="prev" title="Find the Level that has the Maximum Sum">
-                  <i class="fa fa-chevron-left"></i> Find the Level that has the Maximum Sum
+                <a href="/2021/02/07/Selection%20Sort/" rel="prev" title="Selection Sort">
+                  <i class="fa fa-chevron-left"></i> Selection Sort
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/01/22/Binary%20Search%20-%20Integer%20Array/" rel="next" title="Binary Search - Integer Array">
-                  Binary Search - Integer Array <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
