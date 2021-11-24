@@ -31,7 +31,7 @@
 <meta property="og:description" content="Find the first non-duplicate character in a string. Return &#39;0&#39; if no unique character is found. 123&gt;first_non_repeating( &quot;abcdcd&quot; )&#96;&#96; --&gt; &#39;a&#39;&#96;&gt;&#96;firs">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-10T00:10:29.664Z">
-<meta property="article:modified_time" content="2021-02-18T11:28:14.835Z">
+<meta property="article:modified_time" content="2021-02-20T11:46:49.396Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
 
@@ -172,14 +172,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -250,7 +250,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 22:28:14" itemprop="dateModified" datetime="2021-02-18T22:28:14+11:00">2021-02-18</time>
+        <time title="Modified: 2021-02-20 22:46:49" itemprop="dateModified" datetime="2021-02-20T22:46:49+11:00">2021-02-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,14 +270,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.5k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -300,8 +300,13 @@
 <p>However this problem should be resolved by another much easier way. <del>I will post it later.</del></p>
 <p>The idea is to map all the character to a table. When the character exist, the value in the table will accelerated by 1. After traversal once, find the first character in <code>str</code> that in the map table the corresponding value is 1, which means this character only appears once in the <code>str</code>. In my solution, I assumed all the characters are in the range from ‘a’ to ‘z’. </p>
 <p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">first_non_repeating</span><span class="params">(<span class="built_in">string</span> str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">26</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.size();i++)&#123;</span><br><span class="line">        arr[str[i]-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[str[i]-<span class="string">&#x27;a&#x27;</span>]==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">first_non_repeating</span><span class="params">(<span class="built_in">string</span> str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">26</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.size();i++)</span><br><span class="line">        arr[str[i]-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.size();i++)</span><br><span class="line">        <span class="keyword">if</span>(arr[str[i]-<span class="string">&#x27;a&#x27;</span>]==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> str[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>There is another smoothie and neat solution used <code>map</code> data structure. </p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">first_non_repeating</span><span class="params">(<span class="built_in">string</span> str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; mt;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//This is a range for loop</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> x : str)</span><br><span class="line">        mt[x]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> x : str)</span><br><span class="line">        <span class="keyword">if</span>(mt[x]==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The last two solutions are quite same, however, the last one is looked more neat and smoothie.</p>
 
     </div>
 
@@ -377,14 +382,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">35k</span>
+    <span title="Symbols count total">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>

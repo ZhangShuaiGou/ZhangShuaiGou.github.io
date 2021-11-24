@@ -31,7 +31,7 @@
 <meta property="og:description" content="Description:  Given a binary tree, write a function to perform a levelorder traversal and return a vector of integers containing the data of the visited nodes in the correct order. 1234567&gt;Examples">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-19T10:45:09.416Z">
-<meta property="article:modified_time" content="2021-02-19T10:47:47.790Z">
+<meta property="article:modified_time" content="2021-02-28T10:16:09.985Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
 
@@ -172,14 +172,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -242,10 +242,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-02-19 21:45:09 / Modified: 21:47:47" itemprop="dateCreated datePublished" datetime="2021-02-19T21:45:09+11:00">2021-02-19</time>
+      <time title="Created: 2021-02-19 21:45:09" itemprop="dateCreated datePublished" datetime="2021-02-19T21:45:09+11:00">2021-02-19</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-28 21:16:09" itemprop="dateModified" datetime="2021-02-28T21:16:09+11:00">2021-02-28</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -264,7 +270,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>855</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -291,6 +297,11 @@
 
 <p>The basic idea is to add a <code>NULL</code> pointer after traversing one layer. I have achieved similar function in previous problems. I will find it out tomorrow and link it here.</p>
 <p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">level_order</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">queue</span>&lt;treeNode*&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        treeNode* tmp = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        </span><br><span class="line">        result.push_back(tmp-&gt;value);</span><br><span class="line">        <span class="keyword">if</span>(tmp-&gt;left)</span><br><span class="line">            que.push(tmp-&gt;left);</span><br><span class="line">        <span class="keyword">if</span>(tmp-&gt;right)</span><br><span class="line">            que.push(tmp-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This is a basic algorithm, therefore there is not a better solution found.</p>
+<p>In some cases, you might need to count the number of the levels. The below solution can count the number. </p>
+<p>The idea is to add an <code>NULL</code> pointer after each end of layer.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">level_order</span><span class="params">(treeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;treeNode*&gt; que;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">    que.push(root);</span><br><span class="line">    que.push(<span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        treeNode* tmp = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(tmp==<span class="literal">NULL</span>&amp;&amp;!que.empty())&#123;</span><br><span class="line">            que.push(<span class="literal">NULL</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(tmp!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            result.push_back(tmp-&gt;value);</span><br><span class="line">            <span class="keyword">if</span>(tmp-&gt;left)</span><br><span class="line">                que.push(tmp-&gt;left);</span><br><span class="line">            <span class="keyword">if</span>(tmp-&gt;right)</span><br><span class="line">                que.push(tmp-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -311,6 +322,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/02/26/Find%20the%20Middle%20Node%20of%20a%20List/" rel="next" title="Find the Middle Node of a List">
+                  Find the Middle Node of a List <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -365,14 +379,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>Symbols count total: </span>
-    <span title="Symbols count total">35k</span>
+    <span title="Symbols count total">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>Reading time total &asymp;</span>
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>

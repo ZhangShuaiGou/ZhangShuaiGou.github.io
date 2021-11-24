@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Description:  Write a function to determine if it is possible to splitan array of integers arr with its size sz into two parts such that the sum of all integers in each part is the same. An empty arra">
+<meta name="description" content="Description:  Given a singly-linked list, write a function to find the middle node of the list. Try and limit the runtime complexity to O(n) and space complexity to O(1). Examples: 1234&gt;1 &#x3D;&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Even Split">
-<meta property="og:url" content="http://example.com/2021/02/03/Even%20Split/index.html">
+<meta property="og:title" content="Find the Middle Node of a List">
+<meta property="og:url" content="http://example.com/2021/02/26/Find%20the%20Middle%20Node%20of%20a%20List/index.html">
 <meta property="og:site_name" content="ZhangShuaiGou">
-<meta property="og:description" content="Description:  Write a function to determine if it is possible to splitan array of integers arr with its size sz into two parts such that the sum of all integers in each part is the same. An empty arra">
+<meta property="og:description" content="Description:  Given a singly-linked list, write a function to find the middle node of the list. Try and limit the runtime complexity to O(n) and space complexity to O(1). Examples: 1234&gt;1 &#x3D;&amp;#x">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-03T01:34:54.506Z">
-<meta property="article:modified_time" content="2021-02-06T02:14:26.067Z">
+<meta property="article:published_time" content="2021-02-26T00:28:25.335Z">
+<meta property="article:modified_time" content="2021-02-26T00:34:47.569Z">
 <meta property="article:author" content="ZhangShuaiGou">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/02/03/Even%20Split/">
+<link rel="canonical" href="http://example.com/2021/02/26/Find%20the%20Middle%20Node%20of%20a%20List/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'en'
   };
 </script>
-<title>Even Split | ZhangShuaiGou</title>
+<title>Find the Middle Node of a List | ZhangShuaiGou</title>
   
 
 
@@ -219,7 +219,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/Even%20Split/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/Find%20the%20Middle%20Node%20of%20a%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +232,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Even Split
+          Find the Middle Node of a List
         </h1>
 
         <div class="post-meta-container">
@@ -242,16 +242,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-02-03 12:34:54" itemprop="dateCreated datePublished" datetime="2021-02-03T12:34:54+11:00">2021-02-03</time>
+      <time title="Created: 2021-02-26 11:28:25 / Modified: 11:34:47" itemprop="dateCreated datePublished" datetime="2021-02-26T11:28:25+11:00">2021-02-26</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-06 13:14:26" itemprop="dateModified" datetime="2021-02-06T13:14:26+11:00">2021-02-06</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -270,7 +264,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.1k</span>
+      <span>910</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -290,17 +284,19 @@
     <div class="post-body" itemprop="articleBody">
         <p>Description:</p>
 <blockquote>
-<p>Write a function to determine if it is possible to split<br>an array of integers <code>arr</code> with its size <code>sz</code> into two parts such that the sum of all integers in each part is the same. An empty array cannot be split.</p>
+<p>Given a <a target="_blank" rel="noopener" href="https://www.firecode.io/problems/index#">singly-linked list</a>, write a function to find the middle node of the list. Try and limit the runtime complexity to O(n) and space complexity to O(1).</p>
 <p>Examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;split_array(&#123;1,2,3,4&#125;,3) &#x3D;&#x3D;&gt; true</span><br><span class="line">&gt;split_array(&#123;1,2,4&#125;,3) &#x3D;&#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;1 &#x3D;&#x3D;&gt; 1</span><br><span class="line">&gt;1-&gt;2 &#x3D;&#x3D;&gt; 1</span><br><span class="line">&gt;1-&gt;2-&gt;3-&gt;4 &#x3D;&#x3D;&gt; 2</span><br><span class="line">&gt;1-&gt;2-&gt;3-&gt;4-&gt;5 &#x3D;&#x3D;&gt; 3</span><br></pre></td></tr></table></figure>
 </blockquote>
 <a id="more"></a>
 
-<p>This problem is similar to the <strong>Subset Summation</strong>. The difference is you need to count the <code>sum</code> of the <code>arr[]</code> and the <code>sum/2</code> is the target sum for the <strong>Subset Summation</strong>. </p>
 <p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//The same solution in Subser Summation problem</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz, <span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(target==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> helper(arr, sz<span class="number">-1</span>, target-arr[sz<span class="number">-1</span>]) || helper(arr, sz<span class="number">-1</span>,target);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">split_array</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> sz)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sz&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> arr_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//Count the sum of arr[].</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;sz; i++)&#123;</span><br><span class="line">        arr_sum+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//If the sum of arr cannot be even divided, return false.</span></span><br><span class="line">    <span class="keyword">if</span>(arr_sum%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Otherwise, returen the result to find the subset according to the sum/2.</span></span><br><span class="line">    <span class="keyword">return</span> helper(arr,sz,arr_sum/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">listNode* <span class="title">find_middle_node</span><span class="params">(listNode* head)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span>(head-&gt;next==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">int</span> sz = <span class="number">0</span>;</span><br><span class="line">    listNode* tmp = head;</span><br><span class="line">    <span class="keyword">while</span>(tmp!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        sz++;</span><br><span class="line">        tmp = tmp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> lim = sz%<span class="number">2</span>==<span class="number">0</span>?sz/<span class="number">2</span><span class="number">-1</span>:sz/<span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lim;i++)&#123;</span><br><span class="line">        head = head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>This problem cost me lot of time. The stupid mistake I made is to thinking about how to find the </p>
+<p>However, the below solution is pretty much better and neat. </p>
+<p>Code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">listNode* <span class="title">find_middle_node</span><span class="params">(listNode* head)</span></span>&#123;</span><br><span class="line">    listNode* fast = head;</span><br><span class="line">    listNode* slow = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(fast &amp;&amp; fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)&#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -314,13 +310,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/03/Pascal's%20Triangle/" rel="prev" title="Pascal's Triangle">
-                  <i class="fa fa-chevron-left"></i> Pascal's Triangle
+                <a href="/2021/02/19/Levelorder%20Traversal/" rel="prev" title="Levelorder Traversal">
+                  <i class="fa fa-chevron-left"></i> Levelorder Traversal
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/03/Find%20the%20Missing%20Number%20from%201%20to%20N+1/" rel="next" title="Find the Missing Number from 1 to N+1">
-                  Find the Missing Number from 1 to N+1 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/11/24/LC-189%20Rotate%20array/" rel="next" title="LC-189 Rotate array">
+                  LC-189 Rotate array <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
